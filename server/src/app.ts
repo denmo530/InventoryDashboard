@@ -5,6 +5,7 @@ import path from "path";
 import productsRouter from "./routes/products/products.router";
 import inventoriesRouter from "./routes/inventories/inventories.router";
 import inventoryBalancesRouter from "./routes/inventoryBalances/inventoryBalances.router";
+import transactionsRouter from "./routes/transactions/transactions.router";
 
 const app: Application = express();
 
@@ -23,5 +24,6 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use("/products", productsRouter);
 app.use("/inventories", inventoriesRouter);
 app.use("/inventoryBalances", inventoryBalancesRouter);
+app.use("/transactions", transactionsRouter);
 
 export default app;

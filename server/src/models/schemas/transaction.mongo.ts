@@ -10,7 +10,7 @@ interface ITransaction {
 const transactionSchema = new Schema({
   createdAt: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
   product: {
     type: String,
