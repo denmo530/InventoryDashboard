@@ -38,9 +38,6 @@ const httpAddTransaction = async (req: Request, res: Response) => {
 
   await updateInventoryBalance(newInventoryBalance);
 
-  //   await httpUpdateInventoryBalance()
-  // Måste nog uppdatera update så den tar en transaktion istället.
-
   return res.status(200).json(transaction);
 };
 
