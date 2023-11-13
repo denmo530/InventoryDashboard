@@ -1,0 +1,17 @@
+{
+  "name": "inventorydashboard",
+  "version": "1.0.0",
+  "description": "Inventory Dashboard project",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "watch": "npm run server & npm run client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dennis Moradkhani",
+  "license": "ISC"
+}
