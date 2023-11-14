@@ -1,12 +1,18 @@
 import Navbar from "./components/Navbar";
-import InventoryScreen from "./screens/InventoryScreen";
+import InventoryPage from "./pages/InventoryPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TransactionPage from "./pages/TransactionPage";
 
 function App() {
   return (
-    <main className="h-screen w-screen flex flex-row">
-      <Navbar />
-      <InventoryScreen />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<InventoryPage />} />
+          <Route path="transactions" element={<TransactionPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

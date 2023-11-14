@@ -1,26 +1,37 @@
 import React from "react";
-import Tilt from "react-parallax-tilt";
+import { InventoryObject } from "../pages/InventoryPage";
 
 interface InventoryCardProps {
-  inventoryLocation: string;
-  product: string;
-  quantity: number;
+  inventory: Array<InventoryObject>;
 }
 
-// Använd getInventoryBalanceLocation routen för att få lagersaldo för specifikt lager. Visa upp varje produkt i kortet
-
-const InventoryCard: React.FC<InventoryCardProps> = ({
-  inventoryLocation,
-  product,
-  quantity,
-}) => {
+const InventoryCard: React.FC<InventoryCardProps> = ({ inventory }) => {
   return (
-    <Tilt className="w-1/4 h-[300px] rounded-md bg-primary p-4">
-      <div>
-        <h1>Produkter</h1>
-        <p>Telfon</p>
+    <div className="w-1/3 md:1/4 h-fit rounded-md bg-primary p-4">
+      <div className="space-y-4">
+        <div className="flex flex-col lg:flex-row lg:justify-between">
+          <h1 className="text-lg font-medium ">Färdigvarulager</h1>
+          <h1>{inventory[0].inventoryLocation}</h1>
+        </div>
+        <div>
+          <h1 className="font-medium text-lg pb-2">Produkter</h1>
+          {inventory.map((item) => {
+            return (
+              <div>
+                <div
+                  className="flex justify-between py-4 items-center"
+                  key={item.product}
+                >
+                  <p>{item.product}</p>
+                  <p>{item.quantity}</p>
+                </div>
+                <hr />
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </Tilt>
+    </div>
   );
 };
 

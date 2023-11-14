@@ -4,6 +4,7 @@ import {
   getAllInventoryBalances,
   getProductInventoryBalance,
   getInventoryBalanceLocation,
+  addNewInventoryBalance,
 } from "../../models/inventoryBalances.model";
 import {
   IInventoryBalance,
@@ -43,9 +44,28 @@ const httpUpdateInventoryBalance = async (req: Request, res: Response) => {
   return res.status(200).json(inventoryBalance);
 };
 
+const httpAddNewInventoryBalance = async (req: Request, res: Response) => {
+  const inventoryBalance: IInventoryBalance = req.body;
+
+  // If any properties are missing return 400 error
+  if (
+    !inventoryBalance.product ||
+    !inventoryBalance.inventoryLocation ||
+    !inventoryBalance.quantity
+  ) {
+    return res.status(400).json({
+      error: "Missing required inventory balance properties",
+    });
+  }
+
+  await addNewInventoryBalance(inventoryBalance);
+
+  return res.status(200).json(inventoryBalance);
+};
 export {
   httpGetAllInventoryBalances,
   httpUpdateInventoryBalance,
   httpGetProductInventoryBalance,
   httpGetLocationInventoryBalance,
+  httpAddNewInventoryBalance,
 };

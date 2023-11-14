@@ -4,6 +4,7 @@ import {
   httpGetAllInventoryBalances,
   httpGetProductInventoryBalance,
   httpGetLocationInventoryBalance,
+  httpAddNewInventoryBalance,
 } from "./inventoryBalances.controller";
 
 const inventoryBalancesRouter = Router();
@@ -19,5 +20,6 @@ inventoryBalancesRouter.get(
 );
 
 inventoryBalancesRouter.post("/", httpUpdateInventoryBalance);
+inventoryBalancesRouter.post("/new", httpAddNewInventoryBalance);
 
 export default inventoryBalancesRouter;

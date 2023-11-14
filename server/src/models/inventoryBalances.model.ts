@@ -43,9 +43,29 @@ async function updateInventoryBalance(inventoryBalance: IInventoryBalance) {
   }
 }
 
+async function addNewInventoryBalance(inventoryBalance: IInventoryBalance) {
+  try {
+    await InventoryBalance.updateOne(
+      {
+        inventoryLocation: inventoryBalance.inventoryLocation,
+        product: inventoryBalance.product,
+      },
+      {
+        product: inventoryBalance.product,
+        inventoryLocation: inventoryBalance.inventoryLocation,
+        quantity: inventoryBalance.quantity,
+      },
+      { upsert: true }
+    );
+  } catch (error) {
+    console.error(`Could not add product: ${error}`);
+  }
+}
+
 export {
   getAllInventoryBalances,
   updateInventoryBalance,
   getInventoryBalanceLocation,
   getProductInventoryBalance,
+  addNewInventoryBalance,
 };
